@@ -5,10 +5,10 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
+  name: 'Reinier Hernández',
+  username: '@RagnarokReinier',
   imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    'https://pbs.twimg.com/profile_images/1452697085745061889/_TKL0bmR_400x400.png',
 }
 const navigation = [
   { name: 'Compone', href: '#', current: true },
@@ -147,7 +147,7 @@ export const Sidebar = () => (
               </div>
               <div className="ml-3">
                 <div className="text-base font-medium leading-none text-white">{user.name}</div>
-                <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
+                <div className="text-sm font-medium leading-none text-gray-400">{user.username}</div>
               </div>
               <button
                 type="button"
