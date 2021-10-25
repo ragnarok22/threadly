@@ -19,8 +19,8 @@ export const Tweet = ({ text }) => {
 
   return (
     <div className="flex pb-5">
-      <Image className="rounded-full mb-auto" src={user.imageUrl} alt="" width='50px' height='50px' />
-      <div className="ml-3 flex-grow">
+      <Image className="rounded-full mb-auto w-1/5 h-12" src={user.imageUrl} alt="" width='50px' height='50px' />
+      <div className="ml-3 flex-grow w-4/5">
         <div className="flex justify-between">
           <p className="font-bold">{user.name}</p>
           <p className="text-gray-500 font-light">{user.username}</p>
