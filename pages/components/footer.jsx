@@ -1,6 +1,6 @@
 export const Footer = () => (
-  <footer className="px-5 py-3 bg-gray-800 text-gray-300 mt-auto flex items-center justify-between w-full">
-    <div>
+  <footer className="px-5 py-3 bg-gray-800 text-gray-300 mt-auto flex flex-col md:flex-row items-center justify-between text-center w-full">
+    <div className="mb-4 md:mb-0">
       &copy; Creado por <a href="https://twitter.com/LimbatusDev">Limbatus</a>. Todos los derechos reservados
     </div>
     <div className="flex justify-around">
