@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 const user = {
   name: 'Reinier Hernández',
@@ -8,9 +9,17 @@ const user = {
 }
 
 export const Tweet = ({ text }) => {
+  const COUNTER_MAX = 280
+  const [counter, setCounter] = useState(COUNTER_MAX)
+
+  useEffect(() => {
+    setCounter(text?.length || 0)
+  }, [text])
+  
+
   return (
-    <div className="flex">
-      <Image className="rounded-full" src={user.imageUrl} alt="" width='50px' height='50px' />
+    <div className="flex pb-5">
+      <Image className="rounded-full mb-auto" src={user.imageUrl} alt="" width='50px' height='50px' />
       <div className="ml-3 flex-grow">
         <div className="flex justify-between">
           <p className="font-bold">{user.name}</p>
@@ -22,6 +31,9 @@ export const Tweet = ({ text }) => {
             ? text
             : 'Tu tweet aparecerá aquí'
           }
+        </p>
+        <p className={`text-right ${counter < COUNTER_MAX ? 'text-gray-300' : 'text-red-300' }`}>
+          {counter}/{COUNTER_MAX}
         </p>
       </div>
     </div>

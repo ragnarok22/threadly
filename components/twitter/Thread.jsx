@@ -5,7 +5,9 @@ export const Thread = ({ tweets }) => {
     <div className="flex flex-col">
       {
         tweets
-        ? <p>hay tweets</p>
+        ? tweets.map((text, i) => {
+          return <Tweet key={i} text={text} />
+        })
         : <Tweet />
       }
     </div>
