@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { BaseLayout } from "../components/layouts/base"
 import { NavBarLayout } from "../components/layouts/NavBar"
 import { Preview } from "../components/Preview"
 import { Writter } from "../components/Writter"

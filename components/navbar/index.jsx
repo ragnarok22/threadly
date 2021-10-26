@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { navigation, userNavigation } from './routes'
 
 const user = {
   name: 'Reinier Hernández',
@@ -10,15 +11,6 @@ const user = {
   imageUrl:
     'https://pbs.twimg.com/profile_images/1452697085745061889/_TKL0bmR_400x400.png',
 }
-const navigation = [
-  { name: 'Compone', href: '#', current: true },
-  { name: 'En cola', href: '#', current: false },
-  { name: 'Estadísticas (pronto)', href: '#', current: false },
-]
-const userNavigation = [
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
