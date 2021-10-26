@@ -15,11 +15,12 @@ export const Tweet = ({ text }) => {
   useEffect(() => {
     setCounter(text?.length || 0)
   }, [text])
-  
 
   return (
     <div className="flex pb-5">
-      <Image className="rounded-full mb-auto w-1/5 h-12" src={user.imageUrl} alt="" width='50px' height='50px' />
+      <div>
+        <Image className="rounded-full" src={user.imageUrl} alt="" width='50px' height='50px' />
+      </div>
       <div className="ml-3 flex-grow w-4/5">
         <div className="flex justify-between">
           <p className="font-bold">{user.name}</p>
