@@ -2,10 +2,7 @@ import { useEffect, useState } from "react"
 import { Thread } from "./twitter/Thread"
 
 export const Preview = ({ className, fullText }) => {
-  const [tweets, setTweets] = useState([
-      'hola mundo',
-      'como estas en este maravilloso día'
-  ])
+  const [tweets, setTweets] = useState([])
 
   useEffect(() => {
     if (fullText && fullText !== '') {
@@ -15,6 +12,8 @@ export const Preview = ({ className, fullText }) => {
         temp.push(procesed[i])
       }
       setTweets(temp)
+    } else {
+      setTweets([""])
     }
   }, [fullText])
 
