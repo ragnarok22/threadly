@@ -22,14 +22,3 @@ a {
 input:checked ~ .dot {
   transform: translateX(100%);
 }
-
-:root {
-  /* Your default theme */
-  --background: inherit;
-  --foreground: inherit;
-}
-
-[data-theme='dark'] {
-  --background: inherit;
-  --foreground: inherit;
-}

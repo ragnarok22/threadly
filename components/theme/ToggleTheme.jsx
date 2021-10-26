@@ -1,26 +1,20 @@
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { useTheme } from 'next-themes'
-import {MoonIcon, SunIcon} from "@heroicons/react/outline";
 
-export const ToggleTheme = () => {
+export const ToggleTheme = ({ isAbsolute = false }) => {
   const { theme, setTheme } = useTheme()
   
   const changeTheme = (e) => {
     // e.preventDefault();
     if (theme === 'dark') {
       setTheme('light');
-      setTheme('light');
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
     } else {
       setTheme('dark');
-      setTheme('dark');
-      document.documentElement.classList.add('dark')
-      document.documentElement.classList.remove('light')
     }
   }
   
   return (
-    <div className="flex items-center justify-center bottom-3 right-3">
+    <div className={`flex items-center justify-center bottom-3 right-3 ${isAbsolute && 'absolute'}`}>
       <label htmlFor="toggleB" className="flex items-center cursor-pointer">
         <div className="relative">
           <input type="checkbox" id="toggleB" className="sr-only" onClick={changeTheme}/>
