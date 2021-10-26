@@ -6,6 +6,7 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { navigation, userNavigation } from './routes'
 import { NavLink } from './NavLink'
 import { classNames } from '../utils'
+import { ToggleTheme } from '../theme/ToggleTheme'
 
 const user = {
   name: 'Reinier Hernández',
@@ -42,6 +43,7 @@ export const Sidebar = () => (
             </div>
             <div className="hidden md:block">
               <div className="ml-4 flex items-center md:ml-6">
+                <ToggleTheme />
                 <button
                   type="button"
                   className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
