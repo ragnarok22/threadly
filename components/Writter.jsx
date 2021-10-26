@@ -4,7 +4,7 @@ export const Writter = ({ className, text, setText }) => {
       <textarea
         placeholder="escribe aquí"
         spellCheck="true"
-        className="h-full w-full"
+        className="h-full w-full focus:outline-none bg-gray-200 rounded-sm p-3"
         value={text}
         onChange={e => setText(e.target.value)}
       />
