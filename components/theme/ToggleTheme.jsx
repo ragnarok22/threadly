@@ -20,7 +20,7 @@ export const ToggleTheme = ({ isAbsolute = false }) => {
           <input type="checkbox" id="toggleB" className="sr-only" onClick={changeTheme}/>
           <div className="block bg-white dark:bg-gray-600 w-14 h-8 rounded-full"/>
           <MoonIcon className="dot invisible dark:visible text-gray-100 absolute left-1 top-1 w-6 h-6 transition"/>
-          <SunIcon className="dot visible dark:invisible text-gray-600 absolute left-1 top-1 w-6 h-6 transition"/>
+          <SunIcon className="dot visible right-0 dark:invisible text-gray-600 absolute left-1 top-1 w-6 h-6 transition"/>
         </div>
       </label>
     </div>
