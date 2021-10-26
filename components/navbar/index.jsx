@@ -4,16 +4,14 @@ import Image from 'next/image'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { navigation, userNavigation } from './routes'
+import { NavLink } from './NavLink'
+import { classNames } from '../utils'
 
 const user = {
   name: 'Reinier Hernández',
   username: '@RagnarokReinier',
   imageUrl:
     'https://pbs.twimg.com/profile_images/1452697085745061889/_TKL0bmR_400x400.png',
-}
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export const Sidebar = () => (
@@ -35,19 +33,9 @@ export const Sidebar = () => (
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {navigation.map((item) => (
-                    <Link key={item.name} href={item.href}>
-                      <a
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    </Link> 
+                    <NavLink key={item.name} href={item.href}>
+                      {item.name}
+                    </NavLink>
                   ))}
                 </div>
               </div>
@@ -67,7 +55,7 @@ export const Sidebar = () => (
                   <div>
                     <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
-                      <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" layout='fill' />
+                      <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="profile picture" width="3rem" height="3rem" />
                     </Menu.Button>
                   </div>
                   <Transition
