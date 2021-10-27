@@ -9,8 +9,9 @@ import { classNames } from '../utils'
 import { ToggleTheme } from '../theme/ToggleTheme'
 import { Modal } from '../Modal'
 import { useRouter } from 'next/router'
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { CALLBACK_URL } from '../../config'
+import { TWITTER_LOGIN } from '../../apollo/mutations'
 
 const user = {
   name: 'Reinier Hernández',
@@ -18,15 +19,6 @@ const user = {
   imageUrl:
     'https://pbs.twimg.com/profile_images/1452697085745061889/_TKL0bmR_400x400.png',
 }
-
-const TWITTER_LOGIN = gql`
-  mutation twitterLogin ($text: String!) {
-    twitterLogin(callbackUrl: $text) {
-      status
-      url
-      oauthToken
-    }
-  }`;
 
 export const Sidebar = () => {
   const router = useRouter()

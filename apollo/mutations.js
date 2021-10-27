@@ -1,12 +1,21 @@
-import gql from "@apollo/client";
+import {gql} from "@apollo/client";
 
 const TWITTER_LOGIN = gql`
-  mutation twitterLogin ($text: String!) {
-    twitterLogin(callbackUrl: $text) {
-      status
-      url
-      oauthToken
-    }
-  }`;
+mutation twitterLogin ($text: String!) {
+  twitterLogin(callbackUrl: $text) {
+    status
+    url
+    oauthToken
+  }
+}`
 
-  export { TWITTER_LOGIN }
+const TWITTER_TOKEN = gql`
+mutation tokenAuth($token: String!, $verifier: String!) {
+  tokenAuth (requestToken: $token, oauthVerifier: $verifier) {
+    status
+    token
+  }
+}
+`
+
+export { TWITTER_LOGIN, TWITTER_TOKEN }
