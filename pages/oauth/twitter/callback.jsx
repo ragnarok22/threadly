@@ -30,7 +30,7 @@ const Callback = () => {
         router.push('/')
       }
     })()
-  }, [])
+  })
 
   return (
     <div>
