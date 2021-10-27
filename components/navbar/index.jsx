@@ -10,6 +10,7 @@ import { ToggleTheme } from '../theme/ToggleTheme'
 import { Modal } from '../Modal'
 import { useRouter } from 'next/router'
 import { gql, useMutation } from '@apollo/client';
+import { CALLBACK_URL } from '../../config'
 
 const user = {
   name: 'Reinier Hernández',
@@ -31,14 +32,16 @@ export const Sidebar = () => {
   const router = useRouter()
   const [twitterLogin, { data, loading, error }] = useMutation(TWITTER_LOGIN);
 
-  const fetchTwitterLogin = async (e) => {
+  const fetchTwitterLogin = async (e) => {  
     e.preventDefault()
     try {
-      const talla = await twitterLogin({ variables: { text: 'http://127.0.0.1:3000' }})
-      console.log(talla)
-    } catch (error) {
-      console.log(error)      
-    }
+      const { data: { twitterLogin: { status, url } } } = await twitterLogin({ variables: { text: CALLBACK_URL }})
+      if (status) {
+        router.push(url)
+      }
+    } catch (error) { 
+      console.log(error)
+    } 
   }
 
   return (
