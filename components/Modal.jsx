@@ -2,8 +2,8 @@ import { Dialog, Transition } from "@headlessui/react"
 import { Fragment, useRef, useState } from "react"
 import { ExclamationIcon, ExclamationCircleIcon, InformationCircleIcon, QuestionMarkCircleIcon } from '@heroicons/react/outline'
 
-export const Modal = ({ title, children, icon, cancelable, closeable }) => {
-  const [open, setOpen] = useState(true)
+export const Modal = ({ isOpen = true, title, children, icon, cancelable, closeable }) => {
+  const [open, setOpen] = useState(isOpen)
 
   const cancelButtonRef = useRef(null)
 
