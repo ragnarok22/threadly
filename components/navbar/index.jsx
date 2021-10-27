@@ -20,7 +20,7 @@ const user = {
     'https://pbs.twimg.com/profile_images/1452697085745061889/_TKL0bmR_400x400.png',
 }
 
-export const Sidebar = () => {
+export const Sidebar = ({ user1 }) => {
   const router = useRouter()
   const [twitterLogin, { data, loading, error }] = useMutation(TWITTER_LOGIN);
 
@@ -40,7 +40,7 @@ export const Sidebar = () => {
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <Modal title="titulo de ejemplo" icon="info">
+          <Modal title="titulo de ejemplo" icon="info" isOpen={user1 !== null}>
             texto de ejemplo
             <button onClick={fetchTwitterLogin}>login</button>
           </Modal>
