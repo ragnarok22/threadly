@@ -45,7 +45,7 @@ export const Sidebar = () => {
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) => (
                       <NavLink key={item.name} href={item.href}>
-                        {item.name}
+                        {item.icon} {item.name}
                       </NavLink>
                     ))}
                   </div>
