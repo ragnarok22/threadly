@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+import { ScheduleButton } from "./ScheduleButton";
 import { Tweet } from "./Tweet"
+import { TweetButton } from "./TweetButton";
 
 export const Thread = ({ tweets }) => {
   const user = useSelector((state) => state.user);
@@ -13,6 +15,10 @@ export const Thread = ({ tweets }) => {
         })
         : <Tweet />
       }
+      <div className="flex justify-around">
+        <TweetButton tweets={tweets} />
+        <ScheduleButton tweets={tweets} />
+      </div>
     </div>
   )
 }
