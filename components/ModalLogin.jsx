@@ -6,6 +6,7 @@ import { CALLBACK_URL } from "../config";
 import { useRouter } from "next/router";
 import Image from 'next/image'
 import twitterLoginImage from '../public/sign-in-with-twitter.png'
+import { RefreshIcon } from "@heroicons/react/outline";
 
 export default function ModalLogin() {
   const router = useRouter();
@@ -40,7 +41,11 @@ export default function ModalLogin() {
           onClick={fetchTwitterLogin}
           className="rounded-xl bg-blue-300 p-2 mt-3 w-52 flex justify-center items-center"
         >
-          <Image src={twitterLoginImage} alt="twitter login" width="141" height="16" />
+          {
+            loading
+            ? <RefreshIcon className="h-6 w-6 text-black animate-spin" aria-hidden="true" />
+            : <Image src={twitterLoginImage} alt="twitter login" width="141" height="16" />
+          }
         </button>
       </div>
     </Modal>
