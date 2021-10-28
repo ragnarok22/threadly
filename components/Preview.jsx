@@ -23,7 +23,7 @@ export const Preview = ({ className, fullText }) => {
       }
     } else {
       setTweets([""])
-      setCanTweet(true)
+      setCanTweet(false)
     }
   }, [fullText])
 

@@ -21,7 +21,13 @@ mutation tokenAuth($token: String!, $verifier: String!) {
       bannerUrl
     }
   }
-}
-`
+}`
 
-export { TWITTER_LOGIN, TWITTER_TOKEN }
+const TWEETER_TWEET = gql`
+mutation tweet($tweets: String!) {
+  tweet(tweets: $tweets) {
+    status
+  }
+}`
+
+export { TWITTER_LOGIN, TWITTER_TOKEN, TWEETER_TWEET }
