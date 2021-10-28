@@ -15,7 +15,7 @@ export const Thread = ({ tweets }) => {
         })
         : <Tweet />
       }
-      <div className="flex justify-around">
+      <div className="flex justify-around absolute bottom-0 w-full">
         <TweetButton tweets={tweets} />
         <ScheduleButton tweets={tweets} />
       </div>

@@ -18,7 +18,7 @@ export const Preview = ({ className, fullText }) => {
   }, [fullText])
 
   return (
-    <div className={`${className} overflow-auto`} style={{maxHeight: '90vh'}}>
+    <div className={`${className} overflow-auto relative`} style={{maxHeight: '90vh'}}>
       <h1 className="text-center text-xl mb-1">Vista previa</h1>
       <Thread tweets={tweets} /> 
     </div>

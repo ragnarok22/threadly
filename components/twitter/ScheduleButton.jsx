@@ -2,8 +2,10 @@ import { CalendarIcon } from '@heroicons/react/outline'
 
 export const ScheduleButton = ({ tweets }) => {
   return (
-    <button className="flex justify-center items-center">
-      <CalendarIcon className="h-8 w-8" />
+    <button
+      className="mx-3 flex justify-center items-center bg-yellow-500 text-gray-100 p-2 rounded-full w-full"
+    >
+      <CalendarIcon className="h-6 w-6 mr-2" />
       Agendar
     </button>
   )
