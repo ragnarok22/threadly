@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import { Provider } from 'react-redux'
-import withRedux from 'next-redux-wrapper'
 import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from 'next-themes'
 import client from '../apollo-client'

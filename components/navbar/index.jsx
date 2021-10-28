@@ -12,17 +12,13 @@ import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client';
 import { CALLBACK_URL } from '../../config'
 import { TWITTER_LOGIN } from '../../apollo/mutations'
+import { useSelector, useDispatch } from 'react-redux'
 
-const user = {
-  name: 'Reinier Hernández',
-  username: '@RagnarokReinier',
-  imageUrl:
-    'https://pbs.twimg.com/profile_images/1452697085745061889/_TKL0bmR_400x400.png',
-}
-
-export const Sidebar = ({ user1 }) => {
+export const Sidebar = () => {
   const router = useRouter()
   const [twitterLogin, { data, loading, error }] = useMutation(TWITTER_LOGIN);
+  const user = useSelector((state) => state.user)
+  const dispatch = useDispatch()
 
   const fetchTwitterLogin = async (e) => {  
     e.preventDefault()
@@ -40,7 +36,7 @@ export const Sidebar = ({ user1 }) => {
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <Modal title="titulo de ejemplo" icon="info" isOpen={user1 !== null}>
+          <Modal title="titulo de ejemplo" icon="info" isOpen={user.username === 'jhondoe'}>
             texto de ejemplo
             <button onClick={fetchTwitterLogin}>login</button>
           </Modal>
@@ -83,7 +79,7 @@ export const Sidebar = ({ user1 }) => {
                     <div>
                       <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="profile picture" width="3rem" height="3rem" />
+                        <img className="h-8 w-8 rounded-full" src={user.image_url} alt="profile picture" width="3rem" height="3rem" />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -151,7 +147,7 @@ export const Sidebar = ({ user1 }) => {
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
                 <div className="flex-shrink-0">
-                  <Image className="h-10 w-10 rounded-full" src={user.imageUrl} alt=""  layout='fill'/>
+                  <Image className="h-10 w-10 rounded-full" src={user.image_url} alt=""  layout='fill'/>
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium leading-none text-white">{user.name}</div>

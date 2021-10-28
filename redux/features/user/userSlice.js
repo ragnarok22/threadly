@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const defaultUser = {
+  name: 'Jhon Doe',
+  username: 'jhondoe',
+  image_url: 'http://pbs.twimg.com/profile_images/1453064951036211203/OwlbEhLf_normal.png',
+  banner_url: 'https://pbs.twimg.com/profile_banners/2245226480/1633215496',
+}
+
 const initialState = {
-  user: null,
+  user: defaultUser,
 }
 
 export const userSlice = createSlice({
