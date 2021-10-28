@@ -8,36 +8,13 @@ import { navigation, userNavigation } from "./routes";
 import { NavLink } from "./NavLink";
 import { classNames } from "../utils";
 import { ToggleTheme } from "../theme/ToggleTheme";
-import { Modal } from "../Modal";
-import { useMutation } from "@apollo/client";
-import { CALLBACK_URL } from "../../config";
-import { TWITTER_LOGIN } from "../../apollo/mutations";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/features/user/userSlice";
-import store from "../../redux/store";
+import ModalLogin from "../ModalLogin";
 
 export const Sidebar = () => {
-  const router = useRouter();
-  const [twitterLogin, { data, loading, error }] = useMutation(TWITTER_LOGIN);
   const user = useSelector((state) => state.user);
-  const showLogin = useSelector((state) => state.user.token === null);
   const dispatch = useDispatch();
-
-  const fetchTwitterLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const {
-        data: {
-          twitterLogin: { status, url },
-        },
-      } = await twitterLogin({ variables: { text: CALLBACK_URL } });
-      if (status) {
-        router.push(url);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleUserActions = (e, id) => {
     e.preventDefault();
@@ -50,10 +27,7 @@ export const Sidebar = () => {
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <Modal title="titulo de ejemplo" icon="info" open={showLogin} setOpen={(e) => {}}>
-            texto de ejemplo
-            <button onClick={fetchTwitterLogin}>login</button>
-          </Modal>
+          <ModalLogin />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
