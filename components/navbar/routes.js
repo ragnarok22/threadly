@@ -1,9 +1,10 @@
 export const navigation = [
-  { name: 'Compone', href: '/', current: true },
-  { name: 'En cola', href: '/queue', current: false },
-  { name: 'Estadísticas (pronto)', href: '#', current: false },
+  { name: 'Compone', href: '/' },
+  { name: 'En cola', href: '/queue' },
+  { name: 'Estadísticas (pronto)', href: '#' },
 ]
+
 export const userNavigation = [
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { id: 'settings', name: 'Settings', href: '#' },
+  { id: 'sign-out', name: 'Sign out', href: '#' },
 ]

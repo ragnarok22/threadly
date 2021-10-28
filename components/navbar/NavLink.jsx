@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { classNames } from '../utils'
 
-export const NavLink = ({ children, href}) => {
+export const NavLink = ({ children, href }) => {
   const router = useRouter()
   const isCurrent = router.asPath === href
 

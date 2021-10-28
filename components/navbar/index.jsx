@@ -1,42 +1,56 @@
-import { Fragment } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { navigation, userNavigation } from './routes'
-import { NavLink } from './NavLink'
-import { classNames } from '../utils'
-import { ToggleTheme } from '../theme/ToggleTheme'
-import { Modal } from '../Modal'
-import { useRouter } from 'next/router'
-import { useMutation } from '@apollo/client';
-import { CALLBACK_URL } from '../../config'
-import { TWITTER_LOGIN } from '../../apollo/mutations'
-import { useSelector, useDispatch } from 'react-redux'
+import { Fragment, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { navigation, userNavigation } from "./routes";
+import { NavLink } from "./NavLink";
+import { classNames } from "../utils";
+import { ToggleTheme } from "../theme/ToggleTheme";
+import { Modal } from "../Modal";
+import { useMutation } from "@apollo/client";
+import { CALLBACK_URL } from "../../config";
+import { TWITTER_LOGIN } from "../../apollo/mutations";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/features/user/userSlice";
+import store from "../../redux/store";
 
 export const Sidebar = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [twitterLogin, { data, loading, error }] = useMutation(TWITTER_LOGIN);
-  const user = useSelector((state) => state.user)
-  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user);
+  const showLogin = useSelector((state) => state.user.token === null);
+  const dispatch = useDispatch();
 
-  const fetchTwitterLogin = async (e) => {  
-    e.preventDefault()
+  const fetchTwitterLogin = async (e) => {
+    e.preventDefault();
     try {
-      const { data: { twitterLogin: { status, url } } } = await twitterLogin({ variables: { text: CALLBACK_URL }})
+      const {
+        data: {
+          twitterLogin: { status, url },
+        },
+      } = await twitterLogin({ variables: { text: CALLBACK_URL } });
       if (status) {
-        router.push(url)
+        router.push(url);
       }
-    } catch (error) { 
-      console.log(error)
-    } 
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUserActions = (e, id) => {
+    e.preventDefault();
+    if (id === "sign-out") {
+      dispatch(logout());
+    }
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <Modal title="titulo de ejemplo" icon="info" isOpen={user.token === null}>
+          <Modal title="titulo de ejemplo" icon="info" open={showLogin} setOpen={(e) => {}}>
             texto de ejemplo
             <button onClick={fetchTwitterLogin}>login</button>
           </Modal>
@@ -79,7 +93,13 @@ export const Sidebar = () => {
                     <div>
                       <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="profile picture" width="3rem" height="3rem" />
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={user.imageUrl}
+                          alt="profile picture"
+                          width="3rem"
+                          height="3rem"
+                        />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -98,9 +118,10 @@ export const Sidebar = () => {
                               <Link href={item.href}>
                                 <a
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
                                   )}
+                                  onClick={(e) => handleUserActions(e, item.id)}
                                 >
                                   {item.name}
                                 </a>
@@ -135,10 +156,12 @@ export const Sidebar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -147,11 +170,20 @@ export const Sidebar = () => {
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
                 <div className="flex-shrink-0">
-                  <Image className="h-10 w-10 rounded-full" src={user.imageUrl} alt=""  layout='fill'/>
+                  <Image
+                    className="h-10 w-10 rounded-full"
+                    src={user.imageUrl}
+                    alt=""
+                    layout="fill"
+                  />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">{user.firstName}</div>
-                  <div className="text-sm font-medium leading-none text-gray-400">{user.username}</div>
+                  <div className="text-base font-medium leading-none text-white">
+                    {user.firstName}
+                  </div>
+                  <div className="text-sm font-medium leading-none text-gray-400">
+                    {user.username}
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -167,6 +199,7 @@ export const Sidebar = () => {
                     key={item.name}
                     as="a"
                     href={item.href}
+                    onClick={(e) => handleUserActions(e, item.id)}
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                   >
                     {item.name}
@@ -178,5 +211,5 @@ export const Sidebar = () => {
         </>
       )}
     </Disclosure>
-  )
-}
+  );
+};
