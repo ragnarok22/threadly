@@ -10,6 +10,7 @@ import { ToggleTheme } from "../theme/ToggleTheme";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/features/user/userSlice";
 import ModalLogin from "../ModalLogin";
+import logo from '../../public/logo.png'
 
 export const Sidebar = () => {
   const user = useSelector((state) => state.user);
@@ -34,10 +35,10 @@ export const Sidebar = () => {
                 <div className="flex-shrink-0">
                   <Image
                     className="h-8 w-8"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
-                    width="32"
-                    height="32"
+                    src={logo}
+                    alt="Threadly"
+                    width="64"
+                    height="64"
                   />
                 </div>
                 <div className="hidden md:block">
