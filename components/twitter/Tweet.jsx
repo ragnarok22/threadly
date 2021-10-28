@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { COUNTER_MAX } from '../../config'
 
 export const Tweet = ({ text, user }) => {
-  const COUNTER_MAX = 280
   const [counter, setCounter] = useState(COUNTER_MAX)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const Tweet = ({ text, user }) => {
             : 'Tu tweet aparecerá aquí'
           }
         </p>
-        <p className={`text-right ${counter < COUNTER_MAX ? 'text-gray-300' : 'text-red-300' }`}>
+        <p className={`text-right ${counter <= COUNTER_MAX ? 'text-gray-300' : 'text-red-300' }`}>
           {counter}/{COUNTER_MAX}
         </p>
       </div>
