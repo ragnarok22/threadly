@@ -36,7 +36,7 @@ export const Sidebar = () => {
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <Modal title="titulo de ejemplo" icon="info" isOpen={user.username === 'jhondoe'}>
+          <Modal title="titulo de ejemplo" icon="info" isOpen={user.token === null}>
             texto de ejemplo
             <button onClick={fetchTwitterLogin}>login</button>
           </Modal>
@@ -79,7 +79,7 @@ export const Sidebar = () => {
                     <div>
                       <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.image_url} alt="profile picture" width="3rem" height="3rem" />
+                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="profile picture" width="3rem" height="3rem" />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -147,10 +147,10 @@ export const Sidebar = () => {
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
                 <div className="flex-shrink-0">
-                  <Image className="h-10 w-10 rounded-full" src={user.image_url} alt=""  layout='fill'/>
+                  <Image className="h-10 w-10 rounded-full" src={user.imageUrl} alt=""  layout='fill'/>
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">{user.name}</div>
+                  <div className="text-base font-medium leading-none text-white">{user.firstName}</div>
                   <div className="text-sm font-medium leading-none text-gray-400">{user.username}</div>
                 </div>
                 <button

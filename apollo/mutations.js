@@ -14,6 +14,12 @@ mutation tokenAuth($token: String!, $verifier: String!) {
   tokenAuth (requestToken: $token, oauthVerifier: $verifier) {
     status
     token
+    user {
+      firstName
+      username
+      imageUrl
+      bannerUrl
+    }
   }
 }
 `
