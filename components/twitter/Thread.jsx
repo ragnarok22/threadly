@@ -3,7 +3,7 @@ import { ScheduleButton } from "./ScheduleButton";
 import { Tweet } from "./Tweet"
 import { TweetButton } from "./TweetButton";
 
-export const Thread = ({ tweets, canTweet }) => {
+export const Thread = ({ tweets, canTweet, setText }) => {
   const user = useSelector((state) => state.user);
 
   return (
@@ -16,8 +16,8 @@ export const Thread = ({ tweets, canTweet }) => {
         : <Tweet />
       }
       <div className="flex justify-around absolute bottom-0 w-full">
-        <TweetButton tweets={tweets} canTweet={canTweet} />
-        <ScheduleButton tweets={tweets} canTweet={canTweet} />
+        <TweetButton tweets={tweets} canTweet={canTweet} setText={setText} />
+        <ScheduleButton tweets={tweets} canTweet={canTweet} setText={setText} />
       </div>
     </div>
   )

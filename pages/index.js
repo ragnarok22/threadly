@@ -9,7 +9,7 @@ export default function Home({ user }) {
   return (
     <NavBarLayout>
       <Writter className="w-2/3 pr-3 h-full" text={text} setText={setText} />
-      <Preview className="w-1/3" fullText={text} />
+      <Preview className="w-1/3" fullText={text} setText={setText} />
     </NavBarLayout>
   )
 }

@@ -13,9 +13,7 @@ export const BaseLayout = ({ children }) => (
       <link rel="shortcut icon" href="/favicon32x32.ico" type="image/x-icon" />
     </Head>
     <Sidebar />
-    <ToastContainer
-      closeOnClick={false}
-    />
+    <ToastContainer />
     <main className="h-full">
       { children }
     </main> 

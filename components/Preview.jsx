@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { COUNTER_MAX } from "../config"
 import { Thread } from "./twitter/Thread"
 
-export const Preview = ({ className, fullText }) => {
+export const Preview = ({ className, fullText, setText }) => {
   const [tweets, setTweets] = useState([])
   const [canTweet, setCanTweet] = useState(true)
 
@@ -30,7 +30,7 @@ export const Preview = ({ className, fullText }) => {
   return (
     <div className={`${className} overflow-auto relative`} style={{maxHeight: '90vh'}}>
       <h1 className="text-center text-xl mb-1">Vista previa</h1>
-      <Thread tweets={tweets} canTweet={canTweet} /> 
+      <Thread tweets={tweets} canTweet={canTweet} setText={setText} /> 
     </div>
   )
 }

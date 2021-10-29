@@ -1,34 +1,25 @@
 import { PaperAirplaneIcon } from "@heroicons/react/outline"
 import { useMutation } from '@apollo/client';
 import { TWEETER_TWEET } from '../../apollo/mutations';
-import { useState } from "react";
 import { toast } from "react-toastify";
 
-export const TweetButton = ({ tweets, canTweet }) => {
+export const TweetButton = ({ tweets, canTweet, setText }) => {
   const [tweetPost, { data, loading, error }] = useMutation(TWEETER_TWEET);
-  const [tweetUrl, setTweetUrl] = useState('https://google.com')
 
   const SuccessTweet = () => (
     <div>
       <p className="mb-3">Tweet enviado con éxito 🥳</p>
-      {/* <a
-        className="rounded-full bg-blue-500 text-white px-3 py-2"
-        href={tweetPost}
-        target="_blank" rel="noreferrer"
-        // onClick={() => alert('click')}
-      >
-        Ver en Twitter
-      </a> */}
     </div>
   )
 
   const sendTweet = () => {
+    // return new Promise(resolve => setTimeout(() => resolve("world"), 3000));
     return tweetPost({ variables: { thread: tweets } });
   }
 
-  const displayTweet = (e) => {
+  const displayTweet = async (e) => {
     e.preventDefault()
-    toast.promise(
+    await toast.promise(
       sendTweet,
       {
         pending: 'enviando tweets',
@@ -37,9 +28,10 @@ export const TweetButton = ({ tweets, canTweet }) => {
             return <SuccessTweet />
           }
         },
-        error: 'Ha ocurrido un error 🤯'
+        error: 'Ha ocurrido un error 🤯',
       }
     )
+    setText('')
   }
 
   return (
