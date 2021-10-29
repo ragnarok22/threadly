@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import muppetProfile from '../../../public/img/muppet-profile.jpg'
 
 const defaultUser = {
   firstName: 'Jhon Doe',
   username: 'jhondoe',
   token: null,
-  imageUrl: 'http://pbs.twimg.com/profile_images/1453064951036211203/OwlbEhLf_normal.png',
+  imageUrl: muppetProfile,
   bannerUrl: 'https://pbs.twimg.com/profile_banners/2245226480/1633215496',
 }
 

@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { ToastContainer } from 'react-toastify';
 import { Footer } from "../footer";
 import { Sidebar } from "../navbar";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const BaseLayout = ({ children }) => (
   <div className="min-h-full flex flex-col h-screen">
@@ -11,6 +13,9 @@ export const BaseLayout = ({ children }) => (
       <link rel="shortcut icon" href="/favicon32x32.ico" type="image/x-icon" />
     </Head>
     <Sidebar />
+    <ToastContainer
+      closeOnClick={false}
+    />
     <main className="h-full">
       { children }
     </main> 
