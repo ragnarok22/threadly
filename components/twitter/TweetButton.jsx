@@ -10,7 +10,7 @@ export const TweetButton = ({ tweets, canTweet }) => {
     try {
       const {
         data
-      } = await tweetPost({ variables: { tweets } });
+      } = await tweetPost({ variables: { thread: tweets } });
 
       console.log(data)
 
@@ -30,7 +30,11 @@ export const TweetButton = ({ tweets, canTweet }) => {
       onClick={handleClick}
     >
       <PaperAirplaneIcon className="h-6 w-6 mr-2" />
-      Tweetear
+      {
+        loading
+        ? <p>loading...</p>
+        : <p>Twittear</p>
+      }
     </button>
   )
 }

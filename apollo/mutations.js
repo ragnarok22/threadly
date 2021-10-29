@@ -24,9 +24,10 @@ mutation tokenAuth($token: String!, $verifier: String!) {
 }`
 
 const TWEETER_TWEET = gql`
-mutation tweet($tweets: String!) {
-  tweet(tweets: $tweets) {
+mutation tweetPost($thread: [String]!) {
+  tweetPost(thread: $thread) {
     status
+    tweetUrl
   }
 }`
 

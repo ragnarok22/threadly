@@ -11,15 +11,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/features/user/userSlice";
 import ModalLogin from "../ModalLogin";
 import logo from '../../public/logo.png'
+import client from "../../apollo-client";
 
 export const Sidebar = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const handleUserActions = (e, id) => {
+  const handleUserActions = async (e, id) => {
     e.preventDefault();
     if (id === "sign-out") {
-      dispatch(logout());
+      await dispatch(logout())
+      client.resetStore()
     }
   };
 

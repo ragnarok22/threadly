@@ -70,9 +70,9 @@ export const Modal = ({ open, setOpen, title, children, icon, cancelable, closea
                       {title}
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-500">
                         { children }
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
