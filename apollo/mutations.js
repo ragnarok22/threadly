@@ -19,6 +19,7 @@ mutation tokenAuth($token: String!, $verifier: String!) {
       username
       imageUrl
       bannerUrl
+      isPremium
     }
   }
 }`
