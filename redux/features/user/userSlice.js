@@ -7,6 +7,7 @@ const defaultUser = {
   token: null,
   imageUrl: muppetProfile,
   bannerUrl: 'https://pbs.twimg.com/profile_banners/2245226480/1633215496',
+  isPremium: false,
 }
 
 const initialState = {
