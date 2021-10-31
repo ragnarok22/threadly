@@ -2,14 +2,18 @@ import { CheckIcon } from "@heroicons/react/outline"
 import { useState } from "react"
 import Link from "next/link";
 import { NavBarLayout } from "../components/layouts/NavBar"
+import { useMutation } from "@apollo/client";
+import { CREATE_INVOICE } from "../apollo/mutations";
+import { useRouter } from "next/router";
 
 const Prices = () => {
+  const [text, setText] = useState('Anual')
   const monthlyPrice = 7
   const yearlyPrice = 70
-  const [text, setText] = useState('Anual')
   const [price, setPrice] = useState(yearlyPrice)
+  const [createInvoice, { data, loading, error }] = useMutation(CREATE_INVOICE)
+  const router = useRouter()
   const selected = 'bg-indigo-700 text-white'
-  const notSelected = 'bg-gray-100 text-gray-600 mr-1'
   const common = ' focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none text-base leading-none rounded-full py-4 px-6'
   const isMonthlySelected = () => {
     return price === monthlyPrice
@@ -25,13 +29,30 @@ const Prices = () => {
     setText('Anual')
   }
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault()
+    const billingType = isMonthlySelected() ? 'monthly' : 'yearly'
+    console.log(billingType)
+    try {
+      const {
+        data: {
+          createInvoice: { url },
+        },
+      } = await createInvoice({
+        variables: {
+          billingType,
+        }
+      })
+      router.push(url)
+    } catch (error) {
+      
+    }
+    
   }
 
   return (
     <NavBarLayout>
-      <div className="xl:mx-auto xl:container py-20 2xl:px-0 px-6">
+      <div className="xl:mx-auto xl:container py-8 2xl:px-0 px-6">
         <div className="lg:flex items-center justify-between">
           <div className=" lg:w-1/2 w-full">
             <p className="text-base leading-4 text-gray-600">Choose your plan</p>
@@ -98,7 +119,7 @@ const Prices = () => {
                   </li>
                 </ul>
                 <a className="w-full border-2 cursor-pointer border-green-600 rounded text-center p-3 mt-5" onClick={handleClick}>
-                  Obtener ahora
+                  {loading ? 'loading' : 'Obtener ahora' }
                 </a>
               </div>
             </div>

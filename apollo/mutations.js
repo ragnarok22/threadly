@@ -39,4 +39,11 @@ mutation scheduleThread($tweets: [String]!, $pubDate: DateTime!) {
   }
 }`
 
-export { TWITTER_LOGIN, TWITTER_TOKEN, TWITTER_TWEET, SCHEDULE_THREAD }
+const CREATE_INVOICE = gql`
+mutation createInvoice($billingType: String!) {
+  createInvoice(billingType: $billingType) {
+    url
+  }
+}`
+
+export { TWITTER_LOGIN, TWITTER_TOKEN, TWITTER_TWEET, SCHEDULE_THREAD, CREATE_INVOICE }
