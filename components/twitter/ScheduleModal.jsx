@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Modal } from "../Modal"
 import { useMutation } from '@apollo/client';
 import { SCHEDULE_THREAD } from '../../apollo/mutations';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import moment from "moment"
 import { parseDateTime } from '../utils';
