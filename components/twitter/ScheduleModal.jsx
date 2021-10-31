@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Modal } from "../Modal"
 import { useMutation } from '@apollo/client';
 import { SCHEDULE_THREAD } from '../../apollo/mutations';
@@ -11,6 +12,7 @@ const SuccessScheduled = () => (
 )
 
 export const ScheduleModal = ({ open, setOpen }) => {
+  const [pubDate, setPubDate] = useState();
   const [scheduleThread, { data, loading, error }] = useMutation(SCHEDULE_THREAD);
 
   const sendSheduled = () => {
@@ -40,8 +42,19 @@ export const ScheduleModal = ({ open, setOpen }) => {
   }
 
   return (
-    <Modal open={open} setOpen={setOpen} closeable icon='info'>
-      datepicker
+    <Modal
+      open={open}
+      setOpen={setOpen}
+      closeable
+      cancelable
+      icon='info'
+      title='¿Deseas agendar este hilo?'
+    >
+      <p className="text-xl mb-5">Seleccione la fecha de publicación</p>
+      <div className="mb-3">
+        <input type="date" value={pubDate} onChange={(e) => console.log(e.target.value)} />
+        <input type="time" />
+      </div>
     </Modal>
   )
 }
