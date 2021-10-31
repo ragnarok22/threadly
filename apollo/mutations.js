@@ -36,7 +36,6 @@ const SCHEDULE_THREAD = gql`
 mutation scheduleThread($tweets: [String]!, $pubDate: DateTime!) {
   scheduleThread(tweets: $tweets, pubDate: $pubDate) {
     status
-    tweetUrl
   }
 }`
 

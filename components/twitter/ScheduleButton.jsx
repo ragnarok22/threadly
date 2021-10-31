@@ -15,7 +15,9 @@ export const ScheduleButton = ({ tweets, canTweet, setText }) => {
     <div className="flex justify-center w-full mx-3">
       <ScheduleModal
         open={openModal}
+        tweets={tweets}
         setOpen={setOpenModal}
+        setText={setText}
       />
 
       <button
