@@ -46,4 +46,11 @@ mutation createInvoice($billingType: String!) {
   }
 }`
 
-export { TWITTER_LOGIN, TWITTER_TOKEN, TWITTER_TWEET, SCHEDULE_THREAD, CREATE_INVOICE }
+const CONFIRM_TRANSACTION = gql`
+mutation confirmTransaction($secret: String!) {
+  confirmTransaction(secret: $secret) {
+    status
+  }
+}`
+
+export { TWITTER_LOGIN, TWITTER_TOKEN, TWITTER_TWEET, SCHEDULE_THREAD, CREATE_INVOICE, CONFIRM_TRANSACTION }
