@@ -20,6 +20,7 @@ const Callback = () => {
       })
 
       if (cancel) {
+        // TODO: cancel the payment
         router.push('/')
       } else {
         // proccess payment
@@ -34,7 +35,7 @@ const Callback = () => {
             variables: {
               token,
               remoteId: remote_id,
-              transaction_uuid: transactionUuid,
+              transactionUuid: transaction_uuid,
             }
           })
           if (status) {
