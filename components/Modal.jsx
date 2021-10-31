@@ -82,7 +82,7 @@ export const Modal = ({ open, setOpen, title, children, icon, cancelable, closea
                   cancelable &&
                   <button
                     type="button"
-                    className="mt-3 w-full inline-flex justify-center rounded-md border shadow-sm px-4 py-2 text-base font-medium hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="mt-3 w-full inline-flex justify-center rounded-md border shadow-sm px-4 py-2 text-base font-medium bg-gray-300 dark:bg-gray-500 hover:bg-gray-400 dark:hover:bg-gray-600 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >
@@ -93,7 +93,7 @@ export const Modal = ({ open, setOpen, title, children, icon, cancelable, closea
                   submitable &&
                   <button
                     type="button"
-                    className="mt-3 w-full inline-flex justify-center rounded-md border shadow-sm px-4 py-2 text-base font-medium hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="mt-3 w-full inline-flex justify-center rounded-md border shadow-sm px-4 py-2 text-base font-medium bg-green-300 dark:bg-green-500 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >

@@ -52,9 +52,17 @@ export const ScheduleModal = ({ open, setOpen }) => {
       title='¿Deseas agendar este hilo?'
     >
       <p className="text-xl mb-5">Seleccione la fecha de publicación</p>
-      <div className="mb-3">
-        <input type="date" value={pubDate} onChange={(e) => console.log(e.target.value)} />
-        <input type="time" />
+      <div className="mb-3 flex items-stretch justify-between">
+        <input
+          type="date"
+          value={pubDate}
+          onChange={(e) => console.log(e.target.value)}
+          className="p-3 rounded-full bg-gray-300 dark:bg-gray-600"
+        />
+        <input
+          type="time"
+          className="p-3 rounded-full bg-gray-300 dark:bg-gray-600"
+        />
       </div>
     </Modal>
   )
