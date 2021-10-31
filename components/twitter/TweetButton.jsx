@@ -1,10 +1,10 @@
 import { PaperAirplaneIcon } from "@heroicons/react/outline"
 import { useMutation } from '@apollo/client';
-import { TWEETER_TWEET } from '../../apollo/mutations';
+import { TWITTER_TWEET } from '../../apollo/mutations';
 import { toast } from "react-toastify";
 
 export const TweetButton = ({ tweets, canTweet, setText }) => {
-  const [tweetPost, { data, loading, error }] = useMutation(TWEETER_TWEET);
+  const [tweetPost, { data, loading, error }] = useMutation(TWITTER_TWEET);
 
   const SuccessTweet = () => (
     <div>

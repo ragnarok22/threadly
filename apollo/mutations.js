@@ -24,7 +24,7 @@ mutation tokenAuth($token: String!, $verifier: String!) {
   }
 }`
 
-const TWEETER_TWEET = gql`
+const TWITTER_TWEET = gql`
 mutation tweetPost($thread: [String]!) {
   tweetPost(thread: $thread) {
     status
@@ -32,4 +32,12 @@ mutation tweetPost($thread: [String]!) {
   }
 }`
 
-export { TWITTER_LOGIN, TWITTER_TOKEN, TWEETER_TWEET }
+const SCHEDULE_THREAD = gql`
+mutation scheduleThread($tweets: [String]!, $pubDate: DateTime!) {
+  scheduleThread(tweets: $tweets, pubDate: $pubDate) {
+    status
+    tweetUrl
+  }
+}`
+
+export { TWITTER_LOGIN, TWITTER_TOKEN, TWITTER_TWEET, SCHEDULE_THREAD }
