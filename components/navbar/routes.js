@@ -3,6 +3,7 @@ import { CalendarIcon, PencilIcon, PresentationChartBarIcon } from "@heroicons/r
 export const navigation = [
   { name: 'Compone', href: '/', icon: <PencilIcon className="h-4 w-4 mr-1" /> },
   { name: 'En cola', href: '/queue', icon: <CalendarIcon className="h-4 w-4 mr-1" /> },
+  { name: 'Precios', href: '/prices', icon: <CalendarIcon className="h-4 w-4 mr-1" /> },
   { name: 'Estadísticas (pronto)', href: '#', icon: <PresentationChartBarIcon className="h-4 w-4 mr-1" /> },
 ]
 
