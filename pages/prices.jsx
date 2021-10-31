@@ -1,9 +1,110 @@
+import { CheckIcon } from "@heroicons/react/outline"
+import { useState } from "react"
+import Link from "next/link";
 import { NavBarLayout } from "../components/layouts/NavBar"
 
 const Prices = () => {
+  const monthlyPrice = 7
+  const yearlyPrice = 70
+  const [text, setText] = useState('Anual')
+  const [price, setPrice] = useState(yearlyPrice)
+  const selected = 'bg-indigo-700 text-white'
+  const notSelected = 'bg-gray-100 text-gray-600 mr-1'
+  const common = ' focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none text-base leading-none rounded-full py-4 px-6'
+  const isMonthlySelected = () => {
+    return price === monthlyPrice
+  }
+
+  const changeToMonthly = () => {
+    setPrice(monthlyPrice)
+    setText('Mensual')
+  }
+
+  const changeToYearly = () => {
+    setPrice(yearlyPrice)
+    setText('Anual')
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <NavBarLayout>
-      Prices
+      <div className="xl:mx-auto xl:container py-20 2xl:px-0 px-6">
+        <div className="lg:flex items-center justify-between">
+          <div className=" lg:w-1/2 w-full">
+            <p className="text-base leading-4 text-gray-600">Choose your plan</p>
+            <h1 role="heading" className="md:text-5xl text-3xl font-bold leading-10 mt-3 text-gray-800">
+              Our pricing plan
+            </h1>
+            <p role="contentinfo" className="text-base leading-5 mt-5 text-gray-600">
+              We’re working on a suit of tools to make managing complex systems easier, for everyone for free. we can’t wait to hear what you think
+            </p>
+            <div className="w-56">
+              <div className="bg-gray-100 shadow rounded-full flex items-center mt-10">
+                <button onClick={changeToMonthly} className={isMonthlySelected() ? selected + common : common}>
+                    Mensual
+                </button>
+                <button onClick={changeToYearly} className={isMonthlySelected() ? common : selected + common}>
+                  Anual
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="xl:w-1/2 lg:w-7/12 relative w-full lg:mt-0 mt-12 md:px-8" role="list">
+            <img src="https://i.ibb.co/0n6DSS3/bgimg.png" className="absolute w-full -ml-12 mt-24" alt="background circle images" />
+            <div role="listitem" className="bg-white shadow rounded-lg p-8 relative z-30">
+              <div className="md:flex items-center justify-between">
+                <h2 className="text-2xl font-semibold leading-6 text-gray-800">Starter</h2>
+                <p className="text-2xl font-semibold md:mt-0 mt-4 leading-6 text-gray-800">FREE</p>
+              </div>
+              <p className="md:w-80 text-base leading-6 mt-4 text-gray-600">
+                Una forma sencilla de publicar tus hilos de forma organizada
+              </p>
+              <ul className="mt-3 text-base text-gray-600">
+                <li className="flex">
+                  <CheckIcon className="h-6 w-6 text-green-600 mr-2" aria-hidden="true" /> Publica todos los tweets que desees
+                </li>
+                <li className="flex">
+                  <CheckIcon className="h-6 w-6 text-green-600 mr-2" aria-hidden="true" /> Publica y crea hilos ilimitados
+                </li>
+              </ul>
+            </div>
+            <div role="listitem" className="bg-white shadow rounded-lg mt-3 flex relative z-30">
+              <div className="w-2.5  h-auto bg-indigo-700 rounded-tl-md rounded-bl-md" />
+              <div className="flex flex-col w-full p-8">
+                <div className="md:flex items-center justify-between">
+                  <h2 className="text-2xl font-semibold leading-6 text-gray-800">Branding</h2>
+                  <p className="text-2xl md:mt-0 mt-4 font-semibold leading-6 text-gray-800">
+                    ${price}<span className="font-normal text-base">/{text}</span>
+                  </p>
+                </div>
+                <p className="md:w-80 text-base leading-6 mt-4 text-gray-600">
+                  Para personas que quieran organizar su contenido y trabajar su marca personal
+                </p>
+                <ul className="mt-3 text-base text-gray-600">
+                  <li className="flex">
+                    <CheckIcon className="h-6 w-6 text-green-600 mr-2" aria-hidden="true" /> Publica todos los tweets que desees
+                  </li>
+                  <li className="flex">
+                    <CheckIcon className="h-6 w-6 text-green-600 mr-2" aria-hidden="true" /> Publica y crea hilos ilimitados
+                  </li>
+                  <li className="flex">
+                    <CheckIcon className="h-6 w-6 text-green-600 mr-2" aria-hidden="true" /> Programar todos los tweets que desees
+                  </li>
+                  <li className="flex">
+                    <CheckIcon className="h-6 w-6 text-green-600 mr-2" aria-hidden="true" /> Programa hasta 20 hilos
+                  </li>
+                </ul>
+                <a className="w-full border-2 cursor-pointer border-green-600 rounded text-center p-3 mt-5" onClick={handleClick}>
+                  Obtener ahora
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </NavBarLayout>
   )
 }
