@@ -47,6 +47,7 @@ export const ScheduleModal = ({ open, setOpen }) => {
       setOpen={setOpen}
       closeable
       cancelable
+      submitable
       icon='info'
       title='¿Deseas agendar este hilo?'
     >
