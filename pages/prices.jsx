@@ -45,7 +45,7 @@ const Prices = () => {
       })
       router.push(url)
     } catch (error) {
-      
+      console.log(error)
     }
     
   }
