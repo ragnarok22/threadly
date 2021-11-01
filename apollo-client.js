@@ -4,8 +4,9 @@ import { API_URL } from "./config";
 
 const httpLink = createHttpLink({
   uri: API_URL,
-
 })
+
+console.log(API_URL)
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
