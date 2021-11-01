@@ -20,7 +20,7 @@ const Callback = () => {
       const token = TOKEN
 
       if (cancel) {
-        // TODO: cancel the payment
+        // cancel the payment
         try {
           const {
             data: {
