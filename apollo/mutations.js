@@ -47,10 +47,25 @@ mutation createInvoice($billingType: String!) {
 }`
 
 const CONFIRM_TRANSACTION = gql`
-mutation confirmTransaction($secret: String!) {
-  confirmTransaction(secret: $secret) {
+mutation confirmTransaction($token: String!, $remoteId: String!, $transactionUuid: String!) {
+  confirmTransaction(token: $token, remoteId: $remoteId, transactionUuid: $transactionUuid) {
     status
   }
 }`
 
-export { TWITTER_LOGIN, TWITTER_TOKEN, TWITTER_TWEET, SCHEDULE_THREAD, CREATE_INVOICE, CONFIRM_TRANSACTION }
+const CANCEL_TRANSACTION = gql`
+mutation cancelTransaction($token: String!, $remoteId: String!) {
+  cancelTransaction(token: $token, remoteId: $remoteId) {
+    status
+  }
+}`
+
+export {
+  TWITTER_LOGIN,
+  TWITTER_TOKEN,
+  TWITTER_TWEET,
+  SCHEDULE_THREAD,
+  CREATE_INVOICE,
+  CONFIRM_TRANSACTION,
+  CANCEL_TRANSACTION
+}

@@ -1,27 +1,42 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { RefreshIcon } from '@heroicons/react/outline'
-import { CONFIRM_TRANSACTION } from "../../../apollo/mutations";
+import { ExclamationCircleIcon, RefreshIcon } from '@heroicons/react/outline'
+import { CANCEL_TRANSACTION, CONFIRM_TRANSACTION } from "../../../apollo/mutations";
 import { pay } from "../../../redux/features/user/userSlice";
+import { TOKEN } from "../../../config";
 
 const Callback = () => {
   const router = useRouter()
-  const [confirmTransaction, { data, loading, error }] = useMutation(CONFIRM_TRANSACTION);
+  const [confirmTransaction, { loading, error }] = useMutation(CONFIRM_TRANSACTION);
+  const [cancelTransaction] = useMutation(CANCEL_TRANSACTION);
   const dispatch = useDispatch()
-  const [talla, setTalla] = useState()
 
   useEffect(() => {
+    if(!router.isReady) return;
     (async () => {
-      const { cancel, remote_id, transaction_uuid, token } = router.query
-      setTalla({
-        cancel, remote_id, transaction_uuid
-      })
+      const { cancel, remote_id, transaction_uuid } = router.query
+      const token = TOKEN
 
       if (cancel) {
         // TODO: cancel the payment
-        router.push('/')
+        try {
+          const {
+            data: {
+              cancelTransaction: {
+                status
+              }
+            }
+          } = await cancelTransaction({
+            variables: {
+              token,
+              remoteId: remote_id
+            }
+          })
+        } catch (error) {
+          console.log(error)
+        }
       } else {
         // proccess payment
         try {
@@ -39,21 +54,30 @@ const Callback = () => {
             }
           })
           if (status) {
-            dispatch(pay(status))
+            dispatch(pay(true))
           }
           // redirect to home
-          router.push('/')
         } catch (error) {
           console.log(error)
         }
       }
+      router.push('/')
     })()
-  })
+  }, [router.isReady])
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <RefreshIcon className="h-8 w-8 animate-spin" /> Procesando...
-      {JSON.stringify(talla)}
+    {
+      loading
+      ? <div className="flex"><RefreshIcon className="h-8 w-8 animate-spin" /> Procesando...</div>
+      : ''
+    }
+    {
+      error
+      ? <div className="flex"><ExclamationCircleIcon className="h-8 w-8" /> Error...</div>
+      : ''
+    }
+      
     </div>
   )
 
