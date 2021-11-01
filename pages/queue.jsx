@@ -18,13 +18,16 @@ const Queue = () => {
   useEffect(() => {
     if (data) {
       const { queues } = data
-      setQueues(queues)
       const today = queues.filter(queue => moment(queue.pubDate).isSame(moment(), "day"))
       setToday(today)
       const tomorrow = queues.filter(queue => moment(queue.pubDate).isSame(moment().add(1, "day"), "day"))
       setTomorrow(tomorrow)
+      const next_queues = queues.filter(queue => {
+        return !tomorrow.includes(queue) && !today.includes(queue)
+      })
+      setQueues(next_queues)
     }
-  }, [data])
+  }, [data, loading, error])
 
   return (
     <NavBarLayout className="flex-col">
@@ -45,7 +48,7 @@ const Queue = () => {
         }
         <TweetsQueue title="Hoy" queues={today} />
         <TweetsQueue title="Mañana" queues={tomorrow} />
-        <TweetsQueue title="Próximos hilos" queues={tomorrow} />
+        <TweetsQueue title="Próximos hilos" queues={queues} showDate />
       </div>
     </NavBarLayout>
   )
