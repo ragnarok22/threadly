@@ -5,7 +5,8 @@ const TweetsQueue = ({ title, queues, showDate }) => {
     <div className="w-1/3">
       <h1 className="text-center text-2xl mt-5 mb-2">{ title }</h1>
       { 
-        queues
+        queues &&
+        queues.length !== 0
         ? queues.map(queue => (
             <div className="w-full flex justify-between pb-1 border-b-2 mb-2" key={queue.id}>
               <div>
