@@ -63,6 +63,7 @@ const Callback = () => {
       }
       router.push('/')
     })()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady])
 
   return (
