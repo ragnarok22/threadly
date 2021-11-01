@@ -32,7 +32,6 @@ const Prices = () => {
   const handleClick = async (e) => {
     e.preventDefault()
     const billingType = isMonthlySelected() ? 'monthly' : 'yearly'
-    console.log(billingType)
     try {
       const {
         data: {
