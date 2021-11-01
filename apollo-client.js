@@ -6,8 +6,6 @@ const httpLink = createHttpLink({
   uri: API_URL,
 })
 
-console.log(API_URL)
-
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('authtoken');
