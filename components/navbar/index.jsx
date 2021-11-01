@@ -56,12 +56,15 @@ export const Sidebar = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-4 flex items-center md:ml-6">
-                  <Link href="/prices">
-                      <a className="flex bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-gray-300 rounded-full px-2 py-1">
-                        <LightningBoltIcon className="h-6 w-6" aria-hidden="true" />
-                        <span className="">Actualizar Plan</span>
-                      </a>
-                  </Link>
+                  {
+                    !user.isPremium &&
+                    <Link href="/prices">
+                        <a className="flex bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-gray-300 rounded-full px-2 py-1">
+                          <LightningBoltIcon className="h-6 w-6" aria-hidden="true" />
+                          <span className="">Actualizar Plan</span>
+                        </a>
+                    </Link>
+                  }
                   <button
                     className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
