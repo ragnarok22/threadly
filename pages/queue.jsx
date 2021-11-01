@@ -45,7 +45,7 @@ const Queue = () => {
         }
         <TweetsQueue title="Hoy" queues={today} />
         <TweetsQueue title="Mañana" queues={tomorrow} />
-        <TweetsQueue title="" queues={tomorrow} />
+        <TweetsQueue title="Próximos hilos" queues={tomorrow} />
       </div>
     </NavBarLayout>
   )
