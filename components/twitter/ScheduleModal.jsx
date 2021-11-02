@@ -5,6 +5,7 @@ import { SCHEDULE_THREAD } from '../../apollo/mutations';
 import { toast } from 'react-toastify';
 import moment from "moment"
 import { parseDateTime } from '../utils';
+import { GET_QUEUES } from '../../apollo/queries';
 
 const SuccessScheduled = () => (
   <div>
@@ -14,7 +15,11 @@ const SuccessScheduled = () => (
 
 export const ScheduleModal = ({ tweets, open, setOpen, setText }) => {
   const [pubDate, setPubDate] = useState(moment(moment()).add(1, 'days'));
-  const [scheduleThread, { data, loading, error }] = useMutation(SCHEDULE_THREAD);
+  const [scheduleThread, { data, loading, error }] = useMutation(SCHEDULE_THREAD, {
+    refetchQueries: [
+      { query: GET_QUEUES}
+    ],
+  });
 
   const sendSheduled = async () => {
     console.log(parseDateTime(pubDate))
