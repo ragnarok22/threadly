@@ -1,13 +1,11 @@
 import { useSelector } from "react-redux";
-import { ScheduleButton } from "./ScheduleButton";
 import { Tweet } from "./Tweet"
-import { TweetButton } from "./TweetButton";
 
 export const Thread = ({ tweets, canTweet, setText }) => {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="flex flex-col h-96 overflow-auto">
+    <div className="flex flex-col h-96 overflow-auto px-3">
       {
         tweets
         ? tweets.map((text, i) => {
