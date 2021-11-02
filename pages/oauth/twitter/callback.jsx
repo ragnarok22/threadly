@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client"
 import { TWITTER_TOKEN } from "../../../apollo/mutations"
 import { useDispatch } from "react-redux"
 import { login } from "../../../redux/features/user/userSlice"
+import { toast } from "react-toastify"
 
 const Callback = () => {
   const router = useRouter()
@@ -16,6 +17,7 @@ const Callback = () => {
       const {oauth_token, oauth_verifier, denied} = router.query
       if (denied) {
         // show error
+        toast.warning('Para usar Threadly App debes aceptar')
       } else if (oauth_token && oauth_verifier) {
         try {
           // make a mutation
@@ -24,11 +26,13 @@ const Callback = () => {
             // save token and user
             user.token = token
             dispatch(login(user))
+            toast.info('Bienvenido a Threadly App')
             // redirect to home
             router.push('/')
           }
         } catch (error) {
           console.log(error)
+          toast.error('Error al iniciar sesión')
         }
       } else {
         router.push('/')

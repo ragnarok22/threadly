@@ -5,6 +5,7 @@ import { NavBarLayout } from "../components/layouts/NavBar"
 import { useMutation } from "@apollo/client";
 import { CREATE_INVOICE } from "../apollo/mutations";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const Prices = () => {
   const [text, setText] = useState('Anual')
@@ -45,6 +46,7 @@ const Prices = () => {
       router.push(url)
     } catch (error) {
       console.log(error)
+      toast.error('Se ha producido un error 😓')
     }
     
   }

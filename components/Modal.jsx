@@ -66,7 +66,7 @@ export const Modal = ({ open, setOpen, title, children, icon, cancelable, closea
                 <div className="sm:flex sm:items-start">
                   {getIcon()}
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+                    <Dialog.Title as="h3" className="text-lg text-center leading-6 font-medium text-gray-900 dark:text-gray-100">
                       {title}
                     </Dialog.Title>
                     <div className="mt-2">

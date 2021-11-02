@@ -13,6 +13,8 @@ import { logout } from "../../redux/features/user/userSlice";
 import ModalLogin from "../ModalLogin";
 import logo from '../../public/logo.png'
 import client from "../../apollo-client";
+import { toast } from "react-toastify";
+import router from "next/router";
 
 export const Sidebar = () => {
   const user = useSelector((state) => state.user);
@@ -23,6 +25,8 @@ export const Sidebar = () => {
     if (id === "sign-out") {
       await dispatch(logout())
       client.resetStore()
+      toast.success("Nos vemos pronto 😉")
+      router.push("/")
     }
   };
 

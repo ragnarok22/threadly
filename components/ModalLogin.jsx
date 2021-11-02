@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Image from 'next/image'
 import twitterLoginImage from '../public/sign-in-with-twitter.png'
 import { RefreshIcon } from "@heroicons/react/outline";
+import { toast } from "react-toastify";
 
 export default function ModalLogin() {
   const router = useRouter();
@@ -28,18 +29,21 @@ export default function ModalLogin() {
 
     } catch (error) {
       console.log(error);
+      toast.error("Se ha producido un error 😵");
     }
   };
 
   return (
     <Modal title="Entrar con Twitter" icon="info" open={showLogin} setOpen={(e) => {}}>
       <div>
-        <p>Threadly es una aplicación para mejorar la experiencia en Twitter.</p>
-        <p>Crea hilos de forma fácil y sencilla</p>
-        <p>Publica en el horario que más interacciones tienes</p>
+        <p className="my-1 text-center">Threadly es una aplicación para mejorar la experiencia en Twitter.</p>
+        <div className="flex justify-between text-center my-3 flex-wrap md:flex-nowrap">
+          <p className="dark:bg-gray-700 p-3 rounded-lg dark:text-gray-300 w-full md:w-1/2 mb-2 md:mb-0 md:mr-2">Crea hilos de forma fácil y sencilla</p>
+          <p className="dark:bg-gray-700 p-3 rounded-lg dark:text-gray-300 w-full md:w-1/2 mt-2 md:mt-0 md:ml-2">Publica en el horario que más interacciones tienes</p>
+        </div>
         <button
           onClick={fetchTwitterLogin}
-          className="rounded-xl bg-blue-300 p-2 mt-3 w-52 flex justify-center items-center"
+          className="rounded-xl bg-blue-300 p-2 mt-3 flex justify-center items-center w-full"
         >
           {
             loading

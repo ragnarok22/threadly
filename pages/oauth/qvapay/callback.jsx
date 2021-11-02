@@ -6,6 +6,7 @@ import { ExclamationCircleIcon, RefreshIcon } from '@heroicons/react/outline'
 import { CANCEL_TRANSACTION, CONFIRM_TRANSACTION } from "../../../apollo/mutations";
 import { pay } from "../../../redux/features/user/userSlice";
 import { TOKEN } from "../../../config";
+import { toast } from "react-toastify";
 
 const Callback = () => {
   const router = useRouter()
@@ -34,8 +35,10 @@ const Callback = () => {
               remoteId: remote_id
             }
           })
+          toast.info('Transacción cancelada 🥺👉🏻👈🏻')
         } catch (error) {
           console.log(error)
+          toast.error('Ocurrió un error al cancelar la transacción 🤔')
         }
       } else {
         // proccess payment
@@ -55,10 +58,12 @@ const Callback = () => {
           })
           if (status) {
             dispatch(pay(true))
+            toast.info('Transacción procesada 🥳')
           }
           // redirect to home
         } catch (error) {
           console.log(error)
+          toast.error('Ocurrió un error al procesar la transacción 🤔')
         }
       }
       router.push('/')

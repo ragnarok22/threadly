@@ -22,8 +22,6 @@ export const ScheduleModal = ({ tweets, open, setOpen, setText }) => {
   });
 
   const sendSheduled = async () => {
-    console.log(parseDateTime(pubDate))
-    console.log(tweets)
     return scheduleThread({
       variables: {
         tweets,
@@ -37,7 +35,7 @@ export const ScheduleModal = ({ tweets, open, setOpen, setText }) => {
     await toast.promise(
       sendSheduled,
       {
-        pending: 'agendando hilo',
+        pending: 'agendando hilo 📆',
         success: {
           render({ data }) {
             return <SuccessScheduled />
