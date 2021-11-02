@@ -11,7 +11,7 @@ const Prices = () => {
   const [text, setText] = useState('Anual')
   const monthlyPrice = 7
   const yearlyPrice = 70
-  const [price, setPrice] = useState(yearlyPrice)
+  const [price, setPrice] = useState(monthlyPrice)
   const [createInvoice, { data, loading, error }] = useMutation(CREATE_INVOICE)
   const router = useRouter()
   const selected = 'bg-green-700 text-white'
@@ -48,7 +48,6 @@ const Prices = () => {
       console.log(error)
       toast.error('Se ha producido un error 😓')
     }
-    
   }
 
   return (
