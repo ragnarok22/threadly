@@ -3,9 +3,17 @@ import { XCircleIcon, XIcon } from "@heroicons/react/outline"
 import moment from "moment"
 import { toast } from "react-toastify";
 import { REMOVE_THREAD } from "../apollo/mutations";
+import { GET_QUEUES } from "../apollo/queries";
 
-const TweetsQueue = ({ title, queues, showDate }) => {
-  const [removeThread, { data, loading, error }] = useMutation(REMOVE_THREAD);
+const TweetsQueue = ({ title, queues, showDate, setAllQueues }) => {
+  const [removeThread, { data, loading, error }] = useMutation(
+    REMOVE_THREAD,
+    {
+      refetchQueries: [
+        { query: GET_QUEUES}
+      ],
+    }
+  );
 
   const handleDeleteQueue = async (e, threadId) => {
     e.preventDefault()
@@ -17,6 +25,7 @@ const TweetsQueue = ({ title, queues, showDate }) => {
       } = await removeThread({ variables: { threadId } })
       if (status) {
         toast.success("Hilo eliminado satisfactoriamente")
+        setAllQueues(queues.filter(queue => queue.id !== threadId))
       } else {
         toast.warning("No se ha podido eliminar")
       }

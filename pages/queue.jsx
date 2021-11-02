@@ -11,23 +11,24 @@ import { useSelector } from "react-redux"
 const Queue = () => {
   const user = useSelector((state) => state.user);
   const { data, loading, error } = useQuery(GET_QUEUES)
+  const [nextQueues, setNextQueues] = useState([])
   const [queues, setQueues] = useState([])
   const [today, setToday] = useState()
   const [tomorrow, setTomorrow] = useState()
 
   useEffect(() => {
     if (data) {
-      const { queues } = data
-      const today = queues.filter(queue => moment(queue.pubDate).isSame(moment(), "day"))
+      setQueues(data.queues)
+      const today = data.queues.filter(queue => moment(queue.pubDate).isSame(moment(), "day"))
       setToday(today)
-      const tomorrow = queues.filter(queue => moment(queue.pubDate).isSame(moment().add(1, "day"), "day"))
+      const tomorrow = data.queues.filter(queue => moment(queue.pubDate).isSame(moment().add(1, "day"), "day"))
       setTomorrow(tomorrow)
-      const next_queues = queues.filter(queue => {
+      const next_queues = data.queues.filter(queue => {
         return !tomorrow.includes(queue) && !today.includes(queue)
       })
-      setQueues(next_queues)
+      setNextQueues(next_queues)
     }
-  }, [data, loading, error])
+  }, [data])
 
   return (
     <NavBarLayout className="flex-col">
@@ -46,9 +47,9 @@ const Queue = () => {
             </Link>
           </div>
         }
-        <TweetsQueue title="Hoy" queues={today} />
-        <TweetsQueue title="Mañana" queues={tomorrow} />
-        <TweetsQueue title="Próximos hilos" queues={queues} showDate />
+        <TweetsQueue title="Hoy" queues={today} setAllQueues={setQueues} />
+        <TweetsQueue title="Mañana" queues={tomorrow} setAllQueues={setQueues} />
+        <TweetsQueue title="Próximos hilos" queues={nextQueues} setAllQueues={setQueues} showDate />
       </div>
     </NavBarLayout>
   )
