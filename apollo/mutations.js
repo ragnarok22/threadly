@@ -60,9 +60,9 @@ mutation cancelTransaction($token: String!, $remoteId: String!) {
   }
 }`
 
-const DELETE_THREAD = gql`
-mutation deleteThread($threadId: Int!) {
-  deleteThread(threadId: $threadId) {
+const REMOVE_THREAD = gql`
+mutation removeThread($threadId: Int!) {
+  removeThread(threadId: $threadId) {
     status
   }
 }`
@@ -75,5 +75,5 @@ export {
   CREATE_INVOICE,
   CONFIRM_TRANSACTION,
   CANCEL_TRANSACTION,
-  DELETE_THREAD,
+  REMOVE_THREAD,
 }
