@@ -134,20 +134,9 @@ export const Sidebar = () => {
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
+                <NavLink key={item.name} href={item.href}>
+                  {item.icon} {item.name}
+                </NavLink>
               ))}
             </div>
             <div className="pt-4 pb-3 border-t border-gray-700">
@@ -156,8 +145,9 @@ export const Sidebar = () => {
                   <Image
                     className="h-10 w-10 rounded-full"
                     src={user.imageUrl}
-                    alt=""
-                    layout="fill"
+                    alt="profile picture"
+                    width="32px"
+                    height="32px"
                   />
                 </div>
                 <div className="ml-3">
@@ -178,15 +168,14 @@ export const Sidebar = () => {
               </div>
               <div className="mt-3 px-2 space-y-1">
                 {userNavigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    onClick={(e) => handleUserActions(e, item.id)}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                  >
-                    {item.name}
-                  </Disclosure.Button>
+                  <Link key={item.name} href={item.href}>
+                    <a
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                      onClick={(e) => handleUserActions(e, item.id)}
+                    >
+                      {item.name}
+                    </a>
+                  </Link>
                 ))}
               </div>
             </div>
