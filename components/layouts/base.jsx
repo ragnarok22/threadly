@@ -21,15 +21,15 @@ export const BaseLayout = ({ children }) => (
       <meta name="twitter:description" content="Crea y planifica hilos de Twitter de forma sencilla" />
       <meta name="twitter:site" content="@threadly_app" />
       <meta name="twitter:creator" content="@limbatusDev" />
-      <meta name="twitter:image:src" content="https://ik.imagekit.io/ragnarok22/threadlyapp/banner_ZmV4ghrKpmg.png?updatedAt=1635862698118&tr=w-1200,h-675,fo-auto" />
+      <meta name="twitter:image" content="https://ik.imagekit.io/ragnarok22/threadlyapp/banner_ZmV4ghrKpmg.png?updatedAt=1635862698118&tr=w-1200,h-675,fo-auto" />
       
-      <meta name="og:title" content="Threadly App" />
-      <meta name="og:description" content="Crea y planifica hilos de Twitter de forma sencilla" />
-      <meta name="og:image" content="https://ik.imagekit.io/ragnarok22/threadlyapp/banner_ZmV4ghrKpmg.png?updatedAt=1635862698118&tr=w-1200,h-630,fo-auto" />
-      <meta name="og:url" content="https://threadly.xyz" />
-      <meta name="og:site_name" content="Threadly App" />
-      <meta name="og:locale" content="es_CU" />
-      <meta name="og:type" content="website" />
+      <meta property="og:title" content="Threadly App" />
+      <meta property="og:description" content="Crea y planifica hilos de Twitter de forma sencilla" />
+      <meta property="og:image" content="https://ik.imagekit.io/ragnarok22/threadlyapp/banner_ZmV4ghrKpmg.png?updatedAt=1635862698118&tr=w-1200,h-630,fo-auto" />
+      <meta property="og:url" content="https://app.threadly.xyz" />
+      <meta property="og:site_name" content="Threadly App" />
+      <meta property="og:locale" content="es_CU" />
+      <meta property="og:type" content="website" />
     </Head>
     <Sidebar />
     <ToastContainer />
