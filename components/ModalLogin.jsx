@@ -38,8 +38,8 @@ export default function ModalLogin() {
       <div>
         <p className="my-1 text-center">Threadly es una aplicación para mejorar la experiencia en Twitter.</p>
         <div className="flex justify-between text-center my-3 flex-wrap md:flex-nowrap">
-          <p className="dark:bg-gray-700 p-3 rounded-lg dark:text-gray-300 w-full md:w-1/2 mb-2 md:mb-0 md:mr-2">Crea hilos de forma fácil y sencilla</p>
-          <p className="dark:bg-gray-700 p-3 rounded-lg dark:text-gray-300 w-full md:w-1/2 mt-2 md:mt-0 md:ml-2">Publica en el horario que más interacciones tienes</p>
+          <p className="bg-gray-200 text-gray-700 dark:bg-gray-700 p-3 rounded-lg dark:text-gray-300 w-full md:w-1/2 mb-2 md:mb-0 md:mr-2">Crea hilos de forma fácil y sencilla</p>
+          <p className="bg-gray-200 text-gray-700 dark:bg-gray-700 p-3 rounded-lg dark:text-gray-300 w-full md:w-1/2 mt-2 md:mt-0 md:ml-2">Publica en el horario que más interacciones tienes</p>
         </div>
         <button
           onClick={fetchTwitterLogin}
