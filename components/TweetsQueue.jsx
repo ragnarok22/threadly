@@ -1,10 +1,25 @@
+import { useMutation } from "@apollo/client";
 import { XCircleIcon, XIcon } from "@heroicons/react/outline"
 import moment from "moment"
+import { toast } from "react-toastify";
+import { DELETE_THREAD } from "../apollo/mutations";
 
 const TweetsQueue = ({ title, queues, showDate }) => {
-  const handleDeleteQueue = (e, id) => {
+  const [deleteThread, { data, loading, error }] = useMutation(DELETE_THREAD);
+
+  const handleDeleteQueue = async (e, threadId) => {
     e.preventDefault()
-    console.log("delete queue", id)
+    try {
+      const { 
+        data: { 
+          deleteThread: { status }
+         }
+       } = await deleteThread({ variables: { threadId } })
+       console.log(data)
+    } catch (error) {
+      console.log(error)
+      toast.error("Se ha producido un error 🤯")
+    }
   }
 
   return (

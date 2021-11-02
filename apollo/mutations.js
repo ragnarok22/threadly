@@ -60,6 +60,13 @@ mutation cancelTransaction($token: String!, $remoteId: String!) {
   }
 }`
 
+const DELETE_THREAD = gql`
+mutation deleteThread($threadId: Int!) {
+  deleteThread(threadId: $threadId) {
+    status
+  }
+}`
+
 export {
   TWITTER_LOGIN,
   TWITTER_TOKEN,
@@ -67,5 +74,6 @@ export {
   SCHEDULE_THREAD,
   CREATE_INVOICE,
   CONFIRM_TRANSACTION,
-  CANCEL_TRANSACTION
+  CANCEL_TRANSACTION,
+  DELETE_THREAD,
 }
