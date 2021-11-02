@@ -14,7 +14,7 @@ export const Tweet = ({ text, user }) => {
       <div className="w-1/5">
         <Image className="rounded-full" src={user.imageUrl} alt="" width='50px' height='50px' />
       </div>
-      <div className="ml-3 flex-grow w-4/5">
+      <div className="flex-grow w-4/5">
         <div className="flex justify-between">
           <p className="font-bold w-full flex-grow">{user.firstName}</p>
           <p className="text-gray-500 font-light overflow-hidden overflow-ellipsis">@{user.username}</p>
