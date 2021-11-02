@@ -1,3 +1,4 @@
+import { BadgeCheckIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { COUNTER_MAX } from '../../config'
@@ -16,7 +17,13 @@ export const Tweet = ({ text, user }) => {
       </div>
       <div className="flex-grow w-4/5">
         <div className="flex justify-between">
-          <p className="font-bold w-full flex-grow">{user.firstName}</p>
+          <p className="font-bold w-full flex-grow flex">
+            {user.firstName} 
+            {
+              user.isPremium &&
+              <BadgeCheckIcon className="h-6 w-6" aria-hidden="true" />
+            }
+          </p>
           <p className="text-gray-500 font-light overflow-hidden overflow-ellipsis">@{user.username}</p>
         </div>
         <p className={text ? '' : 'text-gray-400 font-light'}>
