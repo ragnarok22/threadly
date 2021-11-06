@@ -73,7 +73,7 @@ const Prices = () => {
               </div>
             </div>
           </div>
-          <div className="xl:w-1/2 lg:w-7/12 relative w-full lg:mt-0 mt-12 md:px-8" role="list">
+          <div className="xl:w-1/2 lg:w-7/12 relative w-full lg:mt-0 mt-12 md:px-8 z-10" role="list">
             {/* <img src={bgimg} className="absolute w-full -ml-12 mt-24" alt="background circle images" /> */}
             <div role="listitem" className="bg-white dark:bg-gray-600 shadow rounded-lg p-8 relative z-30">
               <div className="md:flex items-center justify-between">
