@@ -5,6 +5,7 @@ import { TWITTER_TOKEN } from "../../../apollo/mutations"
 import { useDispatch } from "react-redux"
 import { login } from "../../../redux/features/user/userSlice"
 import { toast } from "react-toastify"
+import { ExclamationCircleIcon, RefreshIcon } from "@heroicons/react/outline"
 
 const Callback = () => {
   const router = useRouter()
@@ -12,6 +13,8 @@ const Callback = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    if (!router.isReady) return;
+
     (async () => {
       // check get params
       const {oauth_token, oauth_verifier, denied} = router.query
@@ -38,11 +41,21 @@ const Callback = () => {
         router.push('/')
       }
     })()
-  })
+  }, [router.isReady])
 
   return (
-    <div>
-      <p>.</p>
+    <div className="w-screen h-screen flex justify-center items-center">
+    {
+      loading
+      ? <div className="flex"><RefreshIcon className="h-8 w-8 animate-spin" /> Procesando...</div>
+      : ''
+    }
+    {
+      error
+      ? <div className="flex"><ExclamationCircleIcon className="h-8 w-8" /> Error...</div>
+      : ''
+    }
+      
     </div>
   )
 }

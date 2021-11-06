@@ -43,6 +43,7 @@ export default function ModalLogin() {
         </div>
         <button
           onClick={fetchTwitterLogin}
+          disabled={loading}
           className="rounded-xl bg-blue-300 p-2 mt-3 flex justify-center items-center w-full"
         >
           {
