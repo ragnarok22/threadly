@@ -2,6 +2,7 @@ import { BadgeCheckIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { COUNTER_MAX } from '../../config'
+import styles from '../../styles/Tweet.module.css'
 
 export const Tweet = ({ text, user }) => {
   const [counter, setCounter] = useState(COUNTER_MAX)
@@ -26,13 +27,13 @@ export const Tweet = ({ text, user }) => {
           </p>
           <p className="text-gray-500 font-light overflow-hidden overflow-ellipsis">@{user.username}</p>
         </div>
-        <p className={text ? '' : 'text-gray-400 font-light'}>
+        <div className={text ? '' : 'text-gray-400 font-light'}>
           {
             text
-            ? text
+            ? <pre className={styles.tweet}>{text}</pre>
             : 'Tu tweet aparecerá aquí'
           }
-        </p>
+        </div>
         <p className={`text-right ${counter <= COUNTER_MAX ? 'text-gray-300' : 'text-red-300' }`}>
           {counter}/{COUNTER_MAX}
         </p>

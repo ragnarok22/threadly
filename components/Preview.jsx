@@ -3,6 +3,7 @@ import { COUNTER_MAX } from "../config"
 import { ScheduleButton } from "./twitter/ScheduleButton"
 import { Thread } from "./twitter/Thread"
 import { TweetButton } from "./twitter/TweetButton"
+import { splitTextInTweets } from "./utils"
 
 export const Preview = ({ className, fullText, setText }) => {
   const [tweets, setTweets] = useState([])
@@ -10,12 +11,10 @@ export const Preview = ({ className, fullText, setText }) => {
 
   useEffect(() => {
     if (fullText && fullText !== '') {
+      setTweets(splitTextInTweets(fullText))
+
       const procesed = fullText.split('\n')
-      const temp = []
-      for(let i = 0; i < procesed.length; i++) {
-        temp.push(procesed[i])
-      }
-      setTweets(temp)
+      // check if tweets are ok with length
       for(let i = 0; i < procesed.length; i++) {
         if (procesed[i].length > COUNTER_MAX) {
           setCanTweet(false)
