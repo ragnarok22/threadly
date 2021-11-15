@@ -1,3 +1,6 @@
 pre.tweet {
   font-family: inherit;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
