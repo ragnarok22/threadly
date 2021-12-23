@@ -5,6 +5,11 @@ import Image from "@tiptap/extension-image";
 export const Writter = ({ className, text, setText }) => {
   const editor = useEditor({
     extensions: [StarterKit, Image],
+    editorProps: {
+      attributes: {
+        class: "h-96 w-full focus:outline-none bg-gray-100 rounded-sm p-3 dark:bg-gray-700",
+      },
+    },
     // triggered on every change
     onUpdate: ({ editor }) => {
       const json = editor.getJSON();
@@ -35,7 +40,6 @@ export const Writter = ({ className, text, setText }) => {
     <div className={`${className}`}>
       <EditorContent
         editor={editor}
-        className="h-96 w-full focus:outline-none bg-gray-100 rounded-sm p-3 dark:bg-gray-700"
       />
 
       {/* <textarea
