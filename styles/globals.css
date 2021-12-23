@@ -10,6 +10,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.ProseMirror > * + * {
+  /* margin-top: 0.75em; */
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -13,15 +13,15 @@ export const Preview = ({ className, fullText, setText }) => {
     if (fullText && fullText !== '') {
       setTweets(splitTextInTweets(fullText))
 
-      const procesed = fullText.split('\n')
+      // const procesed = fullText.split('\n')
       // check if tweets are ok with length
-      for(let i = 0; i < procesed.length; i++) {
-        if (procesed[i].length > COUNTER_MAX) {
-          setCanTweet(false)
-          break
-        }
-        setCanTweet(true)
-      }
+      // for(let i = 0; i < procesed.length; i++) {
+      //   if (procesed[i].length > COUNTER_MAX) {
+      //     setCanTweet(false)
+      //     break
+      //   }
+      //   setCanTweet(true)
+      // }
     } else {
       setTweets([""])
       setCanTweet(false)
