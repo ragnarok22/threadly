@@ -1,3 +1,6 @@
+# Threadly Frontend
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ragnarok22/threadly/Lint?label=Lint)
+
 This is the [Threadly](https://app.threadly.app) Frontend. Made with [NextJS](https://nextjs.org) and Apollo.
 
 ## Getting Started
