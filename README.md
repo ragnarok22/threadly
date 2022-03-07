@@ -23,4 +23,4 @@ You can see example [here](.env.example).
 This project is [GNU GPLv3](LICENSE) License.
 
 ## Contributing
-We love yout input. Please follow our [Contribution guideline](CONTRIBUTING) and our [Code of conduct](CODE_OF_CONDUCT).
+We love yout input. Please follow our [Contribution guideline](CONTRIBUTING.md) and our [Code of conduct](CODE_OF_CONDUCT.md).
