@@ -14,7 +14,7 @@ export const Thread = ({ tweets, canTweet, setText }) => {
       {
         tweets
         ? tweets.map((text, i) => {
-          return <Tweet key={i} text={text} user={user} />
+          return <Tweet key={i} tweet={text} user={user} />
         })
         : <Tweet />
       }

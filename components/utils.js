@@ -12,23 +12,7 @@ export const parseDateTime = (date) => {
 };
 
 export const splitTextInTweets = (fullText) => {
-  console.log(fullText);
-  if (fullText[fullText.length - 1] === undefined) {
-    fullText.pop();
-  }
-  const text = fullText.map((text) => {
-    if (text === undefined) {
-      return "\n";
-    } else {
-      return text.join("") + "\n";
-    }
-  });
-  const procesed = text.join("").split("\n\n\n");
-  const temp = [];
-  for (let i = 0; i < procesed.length; i++) {
-    temp.push(procesed[i]);
-  }
-  return temp;
+  return fullText.content;
 };
 
 export const checkTweets = (tweets) => {
