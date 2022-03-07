@@ -1,5 +1,10 @@
 # Threadly Frontend
+![GitHub deployments](https://img.shields.io/github/deployments/ragnarok22/threadly/production)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ragnarok22/threadly/Lint?label=Lint)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/ragnarok22/threadly)
+![GitHub contributors](https://img.shields.io/github/contributors/ragnarok22/threadly)
+![GitHub issues](https://img.shields.io/github/issues/ragnarok22/threadly)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/ragnarok22/threadly)
 
 This is the [Threadly](https://app.threadly.app) Frontend. Made with [NextJS](https://nextjs.org) and Apollo.
 
