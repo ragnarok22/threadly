@@ -16,3 +16,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `NEXT_PUBLIC_API_URL`: graphql API endpoint
 - `NEXT_PUBLIC_CALLBACK_URL`: Twitter callback url
 - `NEXT_PUBLIC_TOKEN`: Token for API requests
+
+## License
+This project is [GNU GPLv3](LICENSE).
