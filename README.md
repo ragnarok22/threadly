@@ -20,4 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can see example [here](.env.example).
 
 ## License
-This project is [GNU GPLv3](LICENSE).
+This project is [GNU GPLv3](LICENSE) License.
+
+## Contributing
+We love yout input. Please follow our [Contribution guideline](CONTRIBUTING).
