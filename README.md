@@ -13,6 +13,6 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Env variables
-- NEXT_PUBLIC_API_URL: graphql API endpoint
-- NEXT_PUBLIC_CALLBACK_URL: Twitter callback url
-- NEXT_PUBLIC_TOKEN: Token for API requests
+- `NEXT_PUBLIC_API_URL`: graphql API endpoint
+- `NEXT_PUBLIC_CALLBACK_URL`: Twitter callback url
+- `NEXT_PUBLIC_TOKEN`: Token for API requests
