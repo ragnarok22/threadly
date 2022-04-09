@@ -14,7 +14,7 @@
     "@heroicons/react": "^1.0.5",
     "@reduxjs/toolkit": "^1.6.2",
     "graphql": "^15.7.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "next": "12.1.0",
     "next-themes": "^0.0.15",
     "react": "17.0.2",
